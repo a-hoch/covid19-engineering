@@ -1,0 +1,9 @@
+FROM python:latest
+
+RUN apt-get update && \
+	pip3 install 'sagemaker-training==3.4.2' numpy pandas statsmodels boto3 botocore
+
+COPY /ml /opt/ml/
+
+# Sets env variable to name of training script
+ENV SAGEMAKER_PROGRAM train.py

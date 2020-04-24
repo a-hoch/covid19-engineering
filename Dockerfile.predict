@@ -1,0 +1,8 @@
+FROM python:latest
+
+RUN apt-get update && \
+	pip3 install sagemaker-training <other dependencies>
+
+COPY /ml /opt/ml/
+
+ENV SAGEMAKER_PROGRAM predict.py

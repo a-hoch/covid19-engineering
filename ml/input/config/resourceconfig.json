@@ -1,0 +1,5 @@
+{
+"current_host": "main",
+"hosts": ["main"],
+"network_interface_name":"eth1"
+}

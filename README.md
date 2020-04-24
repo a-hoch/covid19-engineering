@@ -8,9 +8,12 @@ This repo includes the dockerfile and code necessary to create a training image 
 
 ## Core Components
 Dockerfile - defines image creation steps 
-train.py - builds model and pushes .pkl to correct directory
-hyperparameters json ? (stretch)
-sagemaker-training library - does the heavy lifting for us
+`ml/code/train.py` - builds model and pushes .pkl to correct directory
+`ml/code/predict.py` - (Not implemented) Is used to handle model predictions
+`ml/input/config/hyperparameters.json`- default hyperparameters. Can be overridden in SM training job
+Directory Structure in general
+
+sagemaker-training library - provides entrypoint for the training image, and maps sagemaker functionality to the documented directory structure, and provides librarys that can be used within the training/predict scripts
 https://github.com/aws/sagemaker-training-toolkit
 
 
@@ -43,10 +46,10 @@ Note: This command requires the AWS CLI v2
 run from jupyter notebook using estimator API
 
 ### Using Console
-
+Kick off training job using console wizard
 
 ## Analysing training results
-Need to work thorugh this. Still not sure how Sagemaker training records/interacts with training results
+Need to work thorugh this. Looks like logs are outputted to cloudwatch. we can create regexes to identify metrics to record
 
 # SageMaker Prediction
 Not working on this yet. We can either build the functionality into a new image, or build a shared image that can handle both training/predicting
